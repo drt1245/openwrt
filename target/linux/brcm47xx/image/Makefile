@@ -674,6 +674,14 @@ define Device/asus-rt-n66w
 endef
 TARGET_DEVICES += asus-rt-n66w
 
+define Device/belkin-f7d3301
+  DEVICE_TITLE := Belkin F7D3301
+  DEVICE_PACKAGES := kmod-b43 $(USB2_PACKAGES)
+  $(Device/belkin)
+  PRODUCTID := F7D3301
+endef
+TARGET_DEVICES += belkin-f7d3301
+
 define Device/linksys-wrt160n-v3
   DEVICE_TITLE := Linksys WRT160N v3
   DEVICE_PACKAGES := kmod-b43
