@@ -18,3 +18,24 @@
  			struct trx_header *trx;
  
  			if (trx_num >= ARRAY_SIZE(trx_parts))
+diff --git a/drivers/mtd/parsers/parser_trx.c b/drivers/mtd/parsers/parser_trx.c
+index df360a75..74536cbc 100644
+--- a/drivers/mtd/parsers/parser_trx.c
++++ b/drivers/mtd/parsers/parser_trx.c
+@@ -17,6 +17,7 @@
+ #define TRX_PARSER_MAX_PARTS		4
+ 
+ /* Magics */
++#define TRX_MAGIC_F7D3301		0x20100322
+ #define TRX_MAGIC			0x30524448
+ #define UBI_EC_MAGIC			0x23494255	/* UBI# */
+ 
+@@ -74,7 +75,7 @@ static int parser_trx_parse(struct mtd_info *mtd,
+ 		return err;
+ 	}
+ 
+-	if (trx.magic != TRX_MAGIC) {
++	if (trx.magic != TRX_MAGIC && trx.magic != TRX_MAGIC_F7D3301) {
+ 		kfree(parts);
+ 		return -ENOENT;
+ 	}
