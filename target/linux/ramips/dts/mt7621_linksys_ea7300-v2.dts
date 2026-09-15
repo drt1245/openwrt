@@ -6,6 +6,8 @@
 	compatible = "linksys,ea7300-v2", "mediatek,mt7621-soc";
 	model = "Linksys EA7300 v2";
 
+	/delete-node/ leds;
+
 	leds {
 		compatible = "gpio-leds";
 
