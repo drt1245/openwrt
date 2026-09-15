@@ -6,42 +6,65 @@
 	compatible = "linksys,ea7300-v2", "mediatek,mt7621-soc";
 	model = "Linksys EA7300 v2";
 
+	/delete-node/ leds;
+
 	leds {
 		compatible = "gpio-leds";
 
 		wan_green {
 			function = LED_FUNCTION_WAN;
+			color = <LED_COLOR_ID_GREEN>;
 			gpios = <&gpio 4 GPIO_ACTIVE_LOW>;
 		};
 
 		lan1_green {
-			label = "green:lan1";
+			function = LED_FUNCTION_LAN;
+			function-enumerator = <1>;
+			color = <LED_COLOR_ID_GREEN>;
 			gpios = <&gpio 16 GPIO_ACTIVE_LOW>;
 		};
 
 		lan2_green {
-			label = "green:lan2";
+			function = LED_FUNCTION_LAN;
+			function-enumerator = <2>;
+			color = <LED_COLOR_ID_GREEN>;
 			gpios = <&gpio 14 GPIO_ACTIVE_LOW>;
 		};
 
 		lan3_green {
-			label = "green:lan3";
+			function = LED_FUNCTION_LAN;
+			function-enumerator = <3>;
+			color = <LED_COLOR_ID_GREEN>;
 			gpios = <&gpio 13 GPIO_ACTIVE_HIGH>;
 		};
 
 		lan4_green {
-			label = "green:lan4";
+			function = LED_FUNCTION_LAN;
+			function-enumerator = <4>;
+			color = <LED_COLOR_ID_GREEN>;
 			gpios = <&gpio 15 GPIO_ACTIVE_LOW>;
 		};
 
 		led_power: power {
 			function = LED_FUNCTION_POWER;
+			color = <LED_COLOR_ID_WHITE>;
 			gpios = <&gpio 10 GPIO_ACTIVE_HIGH>;
 		};
 
 		wps {
 			function = LED_FUNCTION_WPS;
+			color = <LED_COLOR_ID_GREEN>;
 			gpios = <&gpio 6 GPIO_ACTIVE_HIGH>;
+		};
+	};
+
+	gpio-export {
+		compatible = "gpio-export";
+
+		usb-power {
+			gpio-export,name = "usb-power";
+			gpio-export,output = <0>;
+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
 		};
 	};
 };
